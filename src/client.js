@@ -86,10 +86,10 @@ class Client {
   getAccessToken(oauthToken, oauthTokenSecret, oauthVerifier, callback) {
     var oauth = this.getOAuthClient('');
     oauth.getOAuthAccessToken(oauthToken, oauthTokenSecret, oauthVerifier,
-    (err, oauthAccessToken, oauthAccessTokenSecret, results) => {
-      this.token = oauthAccessToken;
-      callback(err, oauthAccessToken, oauthAccessTokenSecret, results);
-    });
+      (err, oauthAccessToken, oauthAccessTokenSecret, results) => {
+        this.token = oauthAccessToken;
+        callback(err, oauthAccessToken, oauthAccessTokenSecret, results);
+      });
   }
 
   getUserStore() {
@@ -125,12 +125,12 @@ class Client {
         return Promise.resolve({token: cache.sharedToken, url: linkedNotebook.noteStoreUrl});
       } else {
         return this.getNoteStore().authenticateToSharedNotebook(linkedNotebook.sharedNotebookGlobalId)
-        .then(sharedAuth => {
-          const token = sharedAuth.authenticationToken;
-          // cache for later calls
-          this[linkedNotebook.sharedNotebookGlobalId] = {sharedToken: token};
-          return {token, url: linkedNotebook.noteStoreUrl};
-        });
+          .then(sharedAuth => {
+            const token = sharedAuth.authenticationToken;
+            // cache for later calls
+            this[linkedNotebook.sharedNotebookGlobalId] = {sharedToken: token};
+            return {token, url: linkedNotebook.noteStoreUrl};
+          });
       }
     });
   }

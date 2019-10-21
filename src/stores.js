@@ -35,7 +35,7 @@ const ARGUMENT_NAMES = /([^\s,]+)/g;
 function getParamNames(fn) {
   let fnString = fn.toString().replace(STRIP_COMMENTS, '');
   let paramNames = fnString.slice(fnString.indexOf('(') + 1, fnString.indexOf(')'))
-      .match(ARGUMENT_NAMES);
+    .match(ARGUMENT_NAMES);
   return paramNames === null ? [] : paramNames;
 }
 
