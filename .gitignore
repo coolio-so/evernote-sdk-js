@@ -1,8 +1,12 @@
-*swp
-*log
+## Eclipse IDE Configuration File List
+.settings
+.project
+
+## IntelliJ IDE Configuration File List
+.idea/
+
+## Node JS Generation File List
 node_modules
 lib
 config.json
-
-.idea/
 package-lock.json
